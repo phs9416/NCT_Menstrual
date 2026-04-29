@@ -31,7 +31,7 @@ group4_df = pd.read_csv(group4_path, index_col=0)
 combined_df = pd.concat([group1_df, group3_df, group4_df])
 output_path = os.path.join(DATA_DIR, "combined_control_energy_matrix.csv")
 combined_df.to_csv(output_path)
-print(f"✅ All groups merged and saved to: {output_path}")
+print(f"All groups merged and saved to: {output_path}")
 
 from scipy.stats import pearsonr
 import itertools
