@@ -186,6 +186,7 @@ for i in range(1, n_days):
     energy_fixed_homog.append(eng_homog)
 
 energy_fixed_homog.to_csv('/home/phs9416/data/ControlEnergy.csv', index=False)
+
 ############# Group C & D Control Energy ######################
 
 CONNECTOME_BASE_DIR = '/home/phs9416/data/connectome_phase'
@@ -270,7 +271,7 @@ df_group3.index.name = "Subject"
 
 group3_out_path = os.path.join(DATA_DIR, "avg_connectome/all_subject_control_energy_matrix_group3.csv")
 df_group3.to_csv(group3_out_path)
-print(f"[✔] Group 3 energy matrix saved to: {group3_out_path}")
+print(f"Group 3 energy matrix saved to: {group3_out_path}")
 
 ### Group D control energy 
 
@@ -304,5 +305,5 @@ for d in range(1, n_days):  # day 1 ~ 29
 group4_df = pd.DataFrame([group4_energy], index=["Group4"], columns=[f"Day_{d}" for d in range(1, 30)])
 output_path = os.path.join(DATA_DIR, "avg_connectome/all_subject_control_energy_matrix_group4.csv")
 group4_df.to_csv(output_path)
-print(f"✅ Group 4 energy matrix saved to: {output_path}")
+print(f"Group 4 energy matrix saved to: {output_path}")
 
