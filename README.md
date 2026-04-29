@@ -9,7 +9,7 @@ This directory contains scripts for reconstructing phase-specific structural con
   
   dwi_atlas.sh: Registers the Schaefer 100-parcel atlas onto T1-weighted images for consistent node definition.
   
-  dwi_work.sh: Generates individual structural connectomes for each subject across three menstrual phases
+  dwi_work.sh: Generates individual structural connectomes for each subject across three menstrual phases.
 
 ## 2. Control_Energy_Trajectory
 Scripts in this folder analyze day-by-day control energy fluctuations using the longitudinal 28andMe dataset.  
