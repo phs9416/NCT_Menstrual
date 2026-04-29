@@ -1,7 +1,5 @@
 This repository contains the analysis code for the study investigating how hormonal fluctuations across the menstrual cycle and oral contraceptive use modulate brain state transition energy using Network Control Theory (NCT).  
 
-# Repository Structure
-
 ## 1. Structural_Connectome
 This directory contains scripts for reconstructing phase-specific structural connectomes from the Hormone Health Study (HHS) dataset.
 
