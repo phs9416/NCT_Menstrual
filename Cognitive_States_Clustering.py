@@ -26,7 +26,7 @@ features = sig_states[['Diff_Inbound', 'Diff_Outbound']]
 scaler = StandardScaler()
 features_scaled = scaler.fit_transform(features)
 
-# Apply KMeans Clustering (let's try 3 clusters for interpretation)
+# Apply KMeans Clustering
 kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
 sig_states['Cluster'] = kmeans.fit_predict(features_scaled)
 
