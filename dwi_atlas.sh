@@ -1,17 +1,16 @@
 #!/bin/bash
 
 # Number of parallel jobs
-num_jobs=4  # 동시 실행할 작업 수
+num_jobs=4 
 
-export MNI_TEMPLATE="MNIspace.nii.gz"  # MNI 템플릿 경로
-export PARCELLATION_TEMPLATE="Schaefer2018_100Parcels_7Networks_order_FSLMNI152_1mm.nii.gz"  # Schaefer 템플릿 경로
+export MNI_TEMPLATE="MNIspace.nii.gz" 
+export PARCELLATION_TEMPLATE="Schaefer2018_100Parcels_7Networks_order_FSLMNI152_1mm.nii.gz" 
 
 process_subject_phase() {
     local sub="$1"
     local phase="$2"
     local sub_anat="ds/${sub}/ses-0${phase}/anat"
 
-    # 파일 및 경로 확인
     if [ ! -d "${sub_anat}" ]; then
         echo "Directory ${sub_anat} does not exist! Skipping..."
         return
@@ -57,7 +56,6 @@ process_subject_phase() {
 
 export -f process_subject_phase
 
-# 병렬 작업 실행
 for phase in 1 2 3; do
     cat subjList.txt | parallel -j "${num_jobs}" process_subject_phase {} "${phase}"
 done
