@@ -102,5 +102,5 @@ for sub in subject_list:
 
 energy_df = pd.DataFrame(subject_energy_matrices)
 
-save_path = os.path.join("/home/phs9416/data", "energy_results_123_phase.csv")
+save_path = os.path.join("/home/phs9416/data", "energy_results_inandout.csv")
 energy_df.to_csv(save_path, index=False)
