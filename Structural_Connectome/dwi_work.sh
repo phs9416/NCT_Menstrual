@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/phs9416/hhs/ds005360-download/
+cd /home/phs9416/data/ds005360-download/
 
 for_each -nthreads 22 * : mrconvert IN/ses-01/dwi/ses-01_merged_dwi.nii.gz IN/ses-01/dwi/ses-01_dwi.mif -fslgrad IN/ses-01/dwi/ses-01_merged_dwi.bvec IN/ses-01/dwi/ses-01_merged_dwi.bval -datatype float32 -strides 0,0,0,1
 for_each -nthreads 22 * : mrconvert IN/ses-02/dwi/ses-02_merged_dwi.nii.gz IN/ses-01/dwi/ses-02_dwi.mif -fslgrad IN/ses-01/dwi/ses-02_merged_dwi.bvec IN/ses-01/dwi/ses-02_merged_dwi.bval -datatype float32 -strides 0,0,0,1
