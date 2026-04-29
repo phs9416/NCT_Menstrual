@@ -2,12 +2,12 @@ import os
 import nibabel as nib
 import numpy as np
 
-# Step 1: subJList.txt에서 subject ID 읽기
+# Step 1: read subject ID from subJList.txt
 with open("subjList.txt", "r") as f:
     subjects = [line.strip() for line in f.readlines()]
 
-# Step 2: 각 subject와 세션에 대해 파일 병합
-base_dir = "/u7/phs9416/hhs/ds005360-download/"  # 데이터의 루트 디렉토리
+# Step 2: merge file (each subject and session)
+base_dir = "/home/phs9416/ds005360-download/" 
 for subject in subjects:
     subject_dir = os.path.join(base_dir, subject)
     sessions = [d for d in os.listdir(subject_dir) if d.startswith("ses-")]
@@ -15,12 +15,12 @@ for subject in subjects:
     for session in sessions:
         session_dir = os.path.join(subject_dir, session, "dwi")
         
-        # NIfTI, bval, bvec 파일 탐색
+        # NIfTI, bval, bvec file
         nifti_files = sorted([os.path.join(session_dir, f) for f in os.listdir(session_dir) if f.endswith(".nii")])
         bval_files = sorted([os.path.join(session_dir, f) for f in os.listdir(session_dir) if f.endswith(".bval")])
         bvec_files = sorted([os.path.join(session_dir, f) for f in os.listdir(session_dir) if f.endswith(".bvec")])
 
-        # NIfTI 파일 병합
+        # NIfTI file merge
         nifti_images = [nib.load(f) for f in nifti_files]
         nifti_data = np.concatenate([img.get_fdata() for img in nifti_images], axis=-1)
         merged_affine = nifti_images[0].affine
@@ -28,7 +28,7 @@ for subject in subjects:
         merged_nifti_filename = os.path.join(session_dir, f"{session}_merged_dwi.nii.gz")
         merged_nifti.to_filename(merged_nifti_filename)
 
-        # bval 파일 병합
+        # bval file merge
         merged_bvals = []
         for bval_file in bval_files:
             with open(bval_file, "r") as f:
@@ -38,7 +38,7 @@ for subject in subjects:
         with open(merged_bval_filename, "w") as f:
             f.write(" ".join(merged_bvals) + "\n")
 
-        # bvec 파일 병합
+        # bvec file merge
         merged_bvecs = [[], [], []]
         for bvec_file in bvec_files:
             with open(bvec_file, "r") as f:
