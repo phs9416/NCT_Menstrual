@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 ######## RM ANOVA #######################
 
 # Load data
-df = pd.read_csv('energy_results_with_state_names.csv')
+df = pd.read_csv('energy_results_inandout.csv')
 
 states = df['State'].unique()
 rm_results = []
