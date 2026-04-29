@@ -76,7 +76,7 @@ prefixed_terms = [f"terms_abstract_tfidf__{term}" for term in term_list]
 for term in prefixed_terms:
     try:
         term_name = term.split('__')[1]
-        print(f"▶ Processing term: {term_name}")
+        print(f"Processing term: {term_name}")
 
         term_ids = ds.get_studies_by_label(labels=term, label_threshold=0.001)
         if len(term_ids) < 5:
@@ -99,7 +99,7 @@ for term in prefixed_terms:
         print(f"  ⤷ error: {e}")
         continue
 
-print("✅ completed.")
+print("completed.")
 
 
 data = pd.DataFrame(index=labels)
