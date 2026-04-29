@@ -7,7 +7,7 @@ with open("subjList.txt", "r") as f:
     subjects = [line.strip() for line in f.readlines()]
 
 # Step 2: merge file (each subject and session)
-base_dir = "/home/phs9416/hhs/ds005360-download/" 
+base_dir = "/home/phs9416/data/ds005360-download/" 
 for subject in subjects:
     subject_dir = os.path.join(base_dir, subject)
     sessions = [d for d in os.listdir(subject_dir) if d.startswith("ses-")]
