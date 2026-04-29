@@ -9,7 +9,7 @@ export PARCELLATION_TEMPLATE="Schaefer2018_100Parcels_7Networks_order_FSLMNI152_
 process_subject_phase() {
     local sub="$1"
     local phase="$2"
-    local sub_anat="ds/${sub}/ses-0${phase}/anat"
+    local sub_anat="/home/phs9416/hhs/ds005360-download/${sub}/ses-0${phase}/anat"
 
     if [ ! -d "${sub_anat}" ]; then
         echo "Directory ${sub_anat} does not exist! Skipping..."
