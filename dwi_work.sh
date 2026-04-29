@@ -2,6 +2,10 @@
 
 cd /home/phs9416/hhs/ds005360-download/
 
+for_each -nthreads 22 * : mrconvert IN/ses-01/dwi/ses-01_merged_dwi.nii.gz IN/ses-01/dwi/ses-01_dwi.mif -fslgrad IN/ses-01/dwi/ses-01_merged_dwi.bvec IN/ses-01/dwi/ses-01_merged_dwi.bval -datatype float32 -strides 0,0,0,1
+for_each -nthreads 22 * : mrconvert IN/ses-02/dwi/ses-02_merged_dwi.nii.gz IN/ses-01/dwi/ses-02_dwi.mif -fslgrad IN/ses-01/dwi/ses-02_merged_dwi.bvec IN/ses-01/dwi/ses-02_merged_dwi.bval -datatype float32 -strides 0,0,0,1
+for_each -nthreads 22 * : mrconvert IN/ses-03/dwi/ses-03_merged_dwi.nii.gz IN/ses-01/dwi/ses-03_dwi.mif -fslgrad IN/ses-01/dwi/ses-03_merged_dwi.bvec IN/ses-01/dwi/ses-03_merged_dwi.bval -datatype float32 -strides 0,0,0,1
+
 for_each -nthreads 22 * : dwidenoise IN/ses-01/dwi/ses-01_dwi.mif IN/ses-01/dwi/ses-01_dwi_denoised.mif
 for_each -nthreads 22 * : dwidenoise IN/ses-02/dwi/ses-02_dwi.mif IN/ses-02/dwi/ses-02_dwi_denoised.mif
 for_each -nthreads 22 * : dwidenoise IN/ses-03/dwi/ses-03_dwi.mif IN/ses-03/dwi/ses-03_dwi_denoised.mif
@@ -46,9 +50,9 @@ for_each -nthreads 22 * : tcksift IN/ses-01/dwi/20M.tck IN/ses-01/dwi/wm_norm.mi
 for_each -nthreads 22 * : tcksift IN/ses-02/dwi/20M.tck IN/ses-02/dwi/wm_norm.mif IN/ses-02/dwi/2M_SIFT.tck -act IN/ses-02/anat/5TT.mif -term_number 2M
 for_each -nthreads 22 * : tcksift IN/ses-03/dwi/20M.tck IN/ses-03/dwi/wm_norm.mif IN/ses-03/dwi/2M_SIFT.tck -act IN/ses-03/anat/5TT.mif -term_number 2M
 
-for_each -nthreads 22 * : tck2connectome IN/ses-01/dwi/2M_SIFT.tck IN/ses-01/anat/nodes_DK_fixSGM.mif ../connectome/ses-01/IN.csv
-for_each -nthreads 22 * : tck2connectome IN/ses-02/dwi/2M_SIFT.tck IN/ses-02/anat/nodes_DK_fixSGM.mif ../connectome/ses-02/IN.csv
-for_each -nthreads 22 * : tck2connectome IN/ses-03/dwi/2M_SIFT.tck IN/ses-03/anat/nodes_DK_fixSGM.mif ../connectome/ses-03/IN.csv
+for_each -nthreads 22 * : tck2connectome IN/ses-01/dwi/2M_SIFT.tck IN/ses-01/anat/schaefer2T1.mif ../connectome/ses-01/IN.csv
+for_each -nthreads 22 * : tck2connectome IN/ses-02/dwi/2M_SIFT.tck IN/ses-02/anat/schaefer2T1.mif ../connectome/ses-02/IN.csv
+for_each -nthreads 22 * : tck2connectome IN/ses-03/dwi/2M_SIFT.tck IN/ses-03/anat/schaefer2T1.mif ../connectome/ses-03/IN.csv
 
 for_each -nthreads 22 * : dwiextract -bzero IN/ses-01/dwi/dwi.mif IN/ses-01/dwi/dwi_bzero.mif 
 for_each -nthreads 22 * : mrmath IN/ses-01/dwi/dwi_bzero.mif mean IN/ses-01/dwi/mean_bzero.mif -axis 3
